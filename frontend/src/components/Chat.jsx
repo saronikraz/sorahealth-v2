@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_URL = import.meta.env.DEV ? 'http://localhost:8000' : ''
 
 const EXAMPLES = [
   "Why isn't my LDL going down if I'm on a statin?",
@@ -169,7 +169,7 @@ export default function Chat({ profile, onUpdateProfile, onReset }) {
         const next = [...prev]
         next[idx] = {
           role: 'assistant',
-          content: "Couldn't reach the server. Make sure the backend is running on port 8000.",
+          content: "Couldn't reach the server. Please try again.",
           streaming: false,
           isFirst,
           isError: true,
